@@ -1,0 +1,57 @@
+
+Node* findIntersection(Node* head1, Node* head2)
+{
+Node*temp1=head1;
+Node*temp2=head2;
+vector<int>v;
+int size=0;
+while(temp1!=NULL && temp2!=NULL)
+{
+   if(temp1->data==temp2->data) 
+    {
+        
+          v.push_back(temp1->data);  
+          temp1=temp1->next;
+        temp2=temp2->next;
+        size++;
+          
+    }
+        
+    
+    else if(temp1->data<temp2->data)
+    {
+        temp1=temp1->next;
+    }
+    else
+    {
+        temp2=temp2->next;
+    }
+}
+int i=0;
+Node*head3=NULL;
+Node*tail3=NULL;
+while(size!=0)
+{
+    if(head3==NULL)
+    {
+   Node*newnode=new Node(v[i]);
+   head3=newnode;
+   tail3=newnode;
+   
+    }
+    else
+    {
+    Node*newnode=new Node(v[i]);
+    tail3->next=newnode;
+   tail3=newnode;
+        
+    }
+   i++;
+   size--;
+    
+    
+}
+
+return head3;
+
+}
